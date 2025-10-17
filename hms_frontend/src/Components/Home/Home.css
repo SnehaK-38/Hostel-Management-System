@@ -1,0 +1,108 @@
+/* ========== HERO SECTION ========== */
+.hero-section {
+  height: 40vh; /* full screen height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #87ceeb, #b0e0e6, #4682b4, #00bfff);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite; /* animated gradient */
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Animated gradient keyframes */
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Hero heading */
+.hero-title {
+  font-size: 5rem;  /* reduced from 3rem */
+  font-weight: 700;
+  margin-bottom: 15px; /* slightly smaller margin */
+  animation: fadeSlideDown 1.5s ease forwards;
+  opacity: 0;
+}
+
+/* Hero subtitle */
+.hero-subtitle {
+  font-size: 1.5rem;  /* reduced from 1.5rem */
+  animation: fadeSlideUp 1s ease forwards;
+  opacity: 0;
+}
+
+/* Fade + slide animations */
+@keyframes fadeSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  .hero-subtitle {
+    font-size: 0.95rem;
+    padding: 0 10px; /* small padding for mobile */
+  }
+}
+/* ===== HOME PAGE LIGHT BLUE BACKGROUND ===== */
+.main-page {
+  padding: 40px 20px;
+  background-color: #277f9c; /* soft light-blue background */
+}
+
+/* HomeAbout section */
+#about {
+  background-color: transparent; /* remove white background */
+  padding: 20px 0;
+  border-radius: 10px;
+}
+
+/* About text styling */
+.aboutTxt {
+  color: #004080; /* dark blue for readability */
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Optional: iframe map */
+#about iframe {
+  border-radius: 10px;
+  background-color: #e0f7ff; /* blend map with page */
+}
+
+/* Keep cards readable if any inside home */
+.feature-card {
+  background-color: #ffffff; /* keep white for contrast */
+}

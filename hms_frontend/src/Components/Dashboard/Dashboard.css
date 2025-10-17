@@ -1,0 +1,465 @@
+/* --- GLOBAL STYLES & LAYOUT --- */
+
+/* Deep Navy Blue and White Theme */
+:root {
+  --color-primary: #004080; /* Deep Navy Blue */
+  --color-secondary: #007bff; /* Bright Accent Blue */
+  --color-background: #f4f7f6; /* Light Off-White Background */
+  --color-text: #333;
+  --color-text-light: #fff;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Desktop Layout */
+  min-height: 100vh;
+  gap: 20px;
+  background-color: var(--color-background);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+/* Hide menu icon by default on large screens */
+.menu-icon {
+    display: none; 
+}
+
+
+/* --- 2. SIDEBAR STYLING --- */
+#sidebar {
+  grid-row: 2 / 3; 
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--color-shadow);
+  padding: 20px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 20px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 15px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-brand img {
+  width: 30px; 
+}
+
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-list-item a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-size: 1.05rem;
+  transition: background-color 0.2s, padding-left 0.2s;
+  border-left: 5px solid transparent;
+}
+
+.sidebar-list-item a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 5px solid var(--color-secondary);
+  padding-left: 25px;
+}
+
+.sidebar-list-item .icon {
+  font-size: 1.2rem;
+}
+
+/* Ensure close icon is hidden on desktop */
+.sidebar-title .close_icon {
+    display: none;
+}
+
+
+/* --- 3. HEADER STYLING --- */
+.dash-header {
+  grid-column: 1 / -1;
+  background-color: var(--color-text-light);
+  color: var(--color-primary);
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--color-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Sticky Header Fix */
+  position: sticky; 
+  top: 0; 
+  z-index: 10; 
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-align: right;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-primary);
+}
+
+.dash-icon {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+
+
+/* --- 4. DASHBOARD CONTENT AREA & CARDS (Home Component Fix) --- */
+.dashboard-content {
+  padding: 0; 
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.dashboard-content main h1 {
+  color: var(--color-primary);
+  margin-bottom: 10px;
+}
+.dashboard-content main .date {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+.insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background: var(--color-text-light);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px var(--color-shadow);
+  transition: transform 0.3s ease;
+  border-left: 6px solid var(--color-secondary);
+  /* FIX: Ensure the card can contain the circle and button */
+  min-height: 150px; 
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-card .middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px; /* Added margin for better vertical spacing */
+}
+
+.dashboard-card h2 {
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+
+.dashboard-card h3 {
+  color: var(--color-secondary);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* FIX: Progress Container and Circle Positioning */
+.dashboard-card .progress {
+    position: relative;
+    width: 90px; 
+    height: 90px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.dashboard-card .progress svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg); 
+}
+
+.dashboard-card .progress svg circle {
+    fill: none;
+    stroke-width: 8; 
+    stroke-linecap: round;
+    /* Define the background color for the circle track */
+    stroke: #eee; 
+    transition: stroke-dashoffset 0.6s ease;
+}
+
+/* The 'Go' button should be absolutely centered */
+.dashboard-card .number {
+    position: relative;
+    z-index: 2; 
+}
+
+.dashboard-card .go {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.dashboard-card .go:hover {
+  background-color: #0056b3;
+}
+
+
+/* --- 5. FORMS STYLING (Register, Complain, Chat, Payment) --- */
+
+.registration, .Complaint, .chat-container, .payment-container {
+    background-color: var(--color-text-light);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--color-shadow);
+    max-width: 1000px;
+    margin: 0 auto;
+    color: var(--color-text);
+    text-align: left;
+}
+
+.registration h1, .Complaint h1, .chat-container h3, .payment-container h3 {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.input-field input, .inputBox input, .inputBox select, .inputBox textarea, .chat-container .message-chat {
+    width: 100%;
+    padding: 10px 15px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; 
+    transition: border-color 0.3s;
+}
+
+.input-field input:focus, .inputBox input:focus, .inputBox select:focus, .inputBox textarea:focus, .chat-container .message-chat:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.registration .fields, .Complaint .contain {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.registration .nextBtn, .Complaint button[type="submit"], .chat-container .submit-button, .payment-container .submit-btn {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.registration .nextBtn:hover, .Complaint button[type="submit"]:hover, .chat-container .submit-button:hover, .payment-container .submit-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.chat-container {
+    max-width: 500px;
+    text-align: center;
+}
+
+.chat-container .message-chat {
+    border-radius: 20px;
+    padding-right: 20px;
+}
+
+.payment-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    align-items: flex-start;
+    max-width: 900px;
+}
+
+.payment-container form {
+    flex: 1;
+    min-width: 300px;
+}
+
+.payment-container .qr-img {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    border-radius: 12px;
+}
+
+.payment-container .qr-img img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+.payment-container .img-label {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+
+/* --- 6. RESPONSIVENESS (MOBILE TOGGLE FIX) --- */
+@media (max-width: 768px) {
+  
+  /* 1. Change main layout to single column */
+  .grid-container {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  /* 2. Show the hamburger menu icon */
+  .menu-icon {
+      display: block; 
+  }
+  
+  /* Header adjustments */
+  .dash-header {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    grid-column: 1 / 2;
+    z-index: 100; /* High z-index to stay on top */
+  }
+
+  /* 3. Sidebar is fixed and hidden off-screen by default */
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* HIDDEN: Moves it off the left edge */
+    height: 100vh; 
+    z-index: 99; 
+    padding-top: 60px;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* 4. When the 'sidebar-responsive' class is applied, slide it into view */
+  .sidebar-responsive {
+    left: 0; /* VISIBLE: Slides the sidebar into the viewport */
+  }
+  
+  /* 5. Ensure the close icon is visible to close the sidebar */
+  .sidebar-title .close_icon {
+    display: block !important; 
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  /* Content area adjustment */
+  .dashboard-content {
+      padding: 0; 
+  }
+
+  /* Forms adjustments */
+  .registration .fields, .Complaint .contain {
+    grid-template-columns: 1fr; 
+    gap: 10px;
+  }
+
+  .payment-container {
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .payment-container form, .payment-container .qr-img {
+      min-width: 100%;
+  }
+}
+/* --- ADMIN DATA VIEW STYLES --- */
+
+.admin-data-container {
+    padding: 20px;
+    background-color: var(--color-text-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--color-shadow);
+}
+
+.admin-data-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-data-container th, 
+.admin-data-container td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: var(--color-text);
+}
+
+.admin-data-container th {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    font-weight: 600;
+}
+
+.admin-data-container tr:hover {
+    background-color: #f0f0f0;
+}
+
+.view-details-btn {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.view-details-btn:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,116 @@
+/* ========== HOME ABOUT SECTION ========== */
+.home-about {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  background: linear-gradient(135deg, #87ceeb, #b0e0e6); /* sky blue gradient */
+  padding: 60px 8%;
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 1200px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  align-items: flex-start;
+  color: #2c2c2c; /* ensures text is readable on sky background */
+}
+
+/* ========== TEXT SECTION ========== */
+.home-about-content {
+  flex: 1 1 55%;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+.home-about-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.home-about-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.home-about-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+}
+
+.home-about-text {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  text-indent: 20px;
+}
+
+/* ========== MAP / IFRAME SECTION ========== */
+.home-about-map {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: sticky;
+  top: 100px;
+}
+
+.home-about-map iframe {
+  width: 100%;
+  max-width: 500px;
+  height: 450px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 900px) {
+  .home-about {
+    flex-direction: column;
+    padding: 40px 5%;
+  }
+
+  .home-about-content {
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+  }
+
+  .home-about-map {
+    position: relative;
+    top: 0;
+    margin-top: 30px;
+  }
+
+  .home-about-map iframe {
+    height: 350px;
+  }
+}
+
+/* ========== ANIMATION ========== */
+.home-about-content,
+.home-about-map {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 1s forwards;
+}
+
+.home-about-content {
+  animation-delay: 0.3s;
+}
+
+.home-about-map {
+  animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

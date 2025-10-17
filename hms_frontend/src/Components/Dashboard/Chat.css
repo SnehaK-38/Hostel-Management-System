@@ -1,0 +1,216 @@
+/* -------------------------------------- */
+/* 1. Global Container & Layout */
+/* -------------------------------------- */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 700px;
+    background-color: #ffffff;
+    border-radius: 20px; /* Smooth corners */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f3f4f6;
+    padding: 24px;
+    font-family: sans-serif;
+}
+
+/* -------------------------------------- */
+/* 2. Header and Separator */
+/* -------------------------------------- */
+.chat-header {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #e0e7ff; /* Light indigo border */
+    display: flex;
+    align-items: center;
+}
+
+.header-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #4f46e5; /* Indigo */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin-right: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* -------------------------------------- */
+/* 3. Message Area & Scrolling */
+/* -------------------------------------- */
+.message-area {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px; /* Space for scrollbar */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Custom scrollbar for aesthetics */
+.message-area::-webkit-scrollbar {
+    width: 6px;
+}
+.message-area::-webkit-scrollbar-thumb {
+    background-color: #a78bfa; /* Light purple */
+    border-radius: 3px;
+}
+.message-area::-webkit-scrollbar-thumb:hover {
+    background-color: #8b5cf6;
+}
+
+/* -------------------------------------- */
+/* 4. Individual Messages */
+/* -------------------------------------- */
+
+.message-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* User Messages (right side, vibrant color) */
+.user-container {
+    justify-content: flex-end;
+}
+.user-bubble {
+    background-color: #d946ef; /* Fuchsia */
+    color: white;
+    border-radius: 12px;
+    border-top-right-radius: 2px; /* Tail effect */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    max-width: 75%; /* Responsive width */
+    word-wrap: break-word;
+}
+.user-avatar {
+    background-color: #4b5563; /* Gray */
+    margin-left: 8px;
+}
+
+/* AI Messages (left side, subtle color) */
+.ai-bubble {
+    background-color: #eef2ff; /* Light Indigo */
+    color: #4f46e5; /* Dark Indigo text */
+    border-radius: 12px;
+    border-top-left-radius: 2px; /* Tail effect */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    padding: 12px;
+    max-width: 75%;
+    word-wrap: break-word;
+}
+.ai-avatar {
+    background-color: #4f46e5; /* Indigo */
+    margin-right: 8px;
+}
+
+/* Common Avatar Style */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    display: flex;
+    align-items: center;
+}
+.loading-bubble {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    border-radius: 12px;
+    border-top-left-radius: 2px;
+    padding: 12px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* -------------------------------------- */
+/* 5. Input Form */
+/* -------------------------------------- */
+.input-form {
+    display: flex;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid #e0e7ff;
+}
+
+.input-field {
+    flex: 1;
+    padding: 12px 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 25px; /* Pill shape */
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    transition: all 0.2s;
+    color: #374151;
+}
+
+.input-field:focus {
+    border-color: #a855f7; /* Purple focus */
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.25);
+    outline: none;
+}
+
+.input-field:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Send Button */
+.send-button {
+    background-color: #d946ef; /* Fuchsia */
+    color: white;
+    font-weight: 600;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(217, 70, 239, 0.3);
+    transition: all 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.send-button:hover {
+    background-color: #c026d3; /* Darker Fuchsia */
+    transform: scale(1.05);
+}
+
+.send-button:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+.send-button:disabled {
+    opacity: 0.6;
+    background-color: #d946ef;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
