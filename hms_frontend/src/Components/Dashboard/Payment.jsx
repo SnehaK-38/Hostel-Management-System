@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Lock, ArrowLeft, ArrowRight, Check, FileText, Home, User } from 'lucide-react';
+import { Lock, Check } from 'lucide-react';
 
 // --- Mock Data Structure ---
 const MOCK_STUDENT_DATA = {
@@ -74,7 +74,7 @@ const MockStripeElement = ({ onDetailsChange }) => {
 };
 
 // --- STEP 1 ---
-const Step1_FeeReview = ({ setStep, student, totalCalc, userId, setUserId }) => (
+const Step1FeeReview = ({ setStep, student, totalCalc, userId, setUserId }) => (
   <div className="step-content">
     <input
       value={userId}
@@ -95,7 +95,7 @@ const Step1_FeeReview = ({ setStep, student, totalCalc, userId, setUserId }) => 
 );
 
 // --- STEP 2 ---
-const Step2_PaymentConfirmation = ({ setStep, student, totalCalc }) => {
+const Step2PaymentConfirmation = ({ setStep, student, totalCalc }) => {
   const [valid, setValid] = useState(false);
 
   return (
@@ -109,8 +109,8 @@ const Step2_PaymentConfirmation = ({ setStep, student, totalCalc }) => {
   );
 };
 
-// --- STEP 3 (✅ FIXED) ---
-const Step3_Success = ({ totalCalc, student }) => {
+// --- STEP 3 ---
+const Step3Success = ({ totalCalc, student }) => {
   if (!student) return <div>No payment data found</div>;
 
   return (
@@ -147,7 +147,7 @@ const App = () => {
   return (
     <div className="payment-app">
       {step === 1 && (
-        <Step1_FeeReview
+        <Step1FeeReview
           setStep={setStep}
           student={student}
           totalCalc={totalCalc}
@@ -156,14 +156,14 @@ const App = () => {
         />
       )}
       {step === 2 && (
-        <Step2_PaymentConfirmation
+        <Step2PaymentConfirmation
           setStep={setStep}
           student={student}
           totalCalc={totalCalc}
         />
       )}
       {step === 3 && (
-        <Step3_Success student={student} totalCalc={totalCalc} />
+        <Step3Success student={student} totalCalc={totalCalc} />
       )}
     </div>
   );
